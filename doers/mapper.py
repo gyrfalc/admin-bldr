@@ -109,8 +109,24 @@ def buildMapperInterface(table, config):
     try:
         print "building mapper interface for " + table.getName() + "..."
         fileout = open(config.getParam("path_mapper_interface") + "/" + table.getMapperInterfaceFileName(), 'w')
+        fileout.write('package ' + config.getParam("pkg_interface"))
+        fileout.write('\n')
+        fileout.write('\nimport ' + config.getParam("pkg_model") + '.' + table.getClassName() + ';')
+        fileout.write('\n')
+        fileout.write('\npublic interface ' + table.getMapperInterfaceName() + " {")
         
+        #select list
+        fileout.write('\n\tpublic List<'+table.getClassName()+'> list'+table.getClassName()+'();')
+        #select row
+        fileout.write('\n\tpublic '+table.getClassName()+' sel'+table.getClassName()+'('+table.getClassName() +' params);')
+        #update row
+        fileout.write('\n\tpublic void upd'+table.getClassName()+'('+table.getClassName() +' params);')
+        #insert row
+        fileout.write('\n\tpublic void ins'+table.getClassName()+'('+table.getClassName() +' params);')
+        #delete row
+        fileout.write('\n\tpublic void del'+table.getClassName()+'('+table.getClassName() +' params);')
         
+        fileout.write('\n}')
         fileout.close()
         return True
     except Exception as e:

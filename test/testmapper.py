@@ -11,7 +11,13 @@ import model.config
 
 class Test(unittest.TestCase):
     
-    params = {"pkg_model": "com.csc.admin.model", "path_model":"../playground", "path_mapper":"../playground", "path_mapper_interface":"../playground"}
+    params = {"pkg_model": "com.csc.admin.model"
+              , "pkg_interface":"com.csc.admin.map"
+              , "path_model":"../playground"
+              , "path_mapper":"../playground"
+              , "path_mapper_interface":"../playground"
+              , "path_mapper_interface":"../playground"
+    }
     config = model.config.Config(params)       
    
 
